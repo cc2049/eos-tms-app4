@@ -23,12 +23,13 @@
 │   ├── uqrcode 	#生成二维码工具
 │   └── util		#其它常用工具
 ├── components
-│   ├── Form		#表单组件
-│   ├── MasterForm  #主子表组件
+│   ├── customChooser		#自定义选择器
+│   ├── filterSearch  # 关键字查询组件
 │   ├── noData		#暂无数据组件
 │   ├── Plate       #车牌号组件
-│   ├── table       #列表组件
-│   └── Upload	#上传组件
+│   ├── PageForm       #表单页面
+│   ├── PageList       #列表页面
+│   └── TopTabs	     #顶部页签
 ├── js_sdk   
 ├── pages		# 主包
 │   └── common
