@@ -48,10 +48,6 @@
 			} = res
 			console.log(res);
 		}).catch(err => {})
-		console.log('uni', uni);
-		// 获取全局配置
-
-
 	}
 </script>
 
