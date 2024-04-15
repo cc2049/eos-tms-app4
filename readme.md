@@ -5,8 +5,9 @@
 1. 包名：eos.cn.tmsv4
 2. 高德： 安卓 21a19bfe82e3e4e209232e8ad416e63e  苹果  41d4327253915f04c21302c065abc98b
 3. 极光：f29613fbf7d073a26c365633
-4. [SVN](https://47.94.202.228:8443/21.TMS_ITEM/99.TMS4/05.APP 
-https://47.94.202.228:8443/21.TMS_ITEM/99.TMS4/06.WEBPC)
+4. [SVN](https://47.94.202.228:8443/21.TMS_ITEM/99.TMS4/05.APP)
+5. [uni-ui](https://uniapp.dcloud.net.cn/component/uniui/uni-ui.html)
+6. [github](https://github.com/cc2049/eos-tms-app4.git)
 
 ## 目录结构 
 

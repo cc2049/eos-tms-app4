@@ -24,7 +24,6 @@ import App from './App.vue'
 export function createApp() {
   const app = createSSRApp(App)
   app.config.globalProperties.$axios = axios
-  app.config.globalProperties.$eos = {}
   app.config.globalProperties.$_showToast = function (title = '提示') {
   	uni.showToast({
   		title: title,

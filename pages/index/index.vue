@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		<uni-badge size="small" :text="100" absolute="rightBottom" type="primary">
-			<button type="default">右下</button>
+			<button type="default">右下77</button>
 		</uni-badge>
 		<button @click="getAxiosData" class="text-blue">axios 案例</button>
 
