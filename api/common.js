@@ -12,5 +12,9 @@ const globalQuery = {
 
 /** 获取全局配置 */
 export function getGlobalConfig() {
-	return axios(globalUrl, globalQuery, 'POST')
+	return axios({
+		url: globalUrl,
+		data: globalQuery,
+		isLoading: false,
+	})
 }

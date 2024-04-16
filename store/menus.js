@@ -15,6 +15,7 @@ const useTabStore = defineStore('tabStore', {
 		tab03: null,
 		tab04: null,
 		tab05: null,
+		activeCode:'',
 	}),
 	actions: {
 		setTabs(data) {
@@ -25,6 +26,9 @@ const useTabStore = defineStore('tabStore', {
 			this.tab04 = getMyMenu(data , 'tab04')[0];
 			this.tab05 = getMyMenu(data , 'tab05')[0];
 		},
+		setActiveCode(data){
+			this.activeCode = data
+		}
 	}
 })
 

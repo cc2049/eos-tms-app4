@@ -13,6 +13,7 @@
 			isCodeLogin: false, //验证码登录功能 ，true 是显示
 		},
 		onLaunch: function() {
+			uni.hideTabBar()
 			console.log('App Launch')
 		},
 		onShow: function() {

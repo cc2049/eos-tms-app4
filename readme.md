@@ -102,9 +102,12 @@ const {
 
 const getAxiosData = () => {
 	const url = '/oms/app/bidProject/getRushOrderCount'
-	global.$axios(url, {}, 'POST').then(res => {
-		const { RESULT } = res 
-		console.log( res );
+	global.$axios({
+		url,
+		data: {},
+	}).then(res => {
+		const { RESULT } = res
+		console.log(res);
 	}).catch(err => {})
 }
 ```

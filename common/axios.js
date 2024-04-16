@@ -2,8 +2,8 @@
  * url 接口地址，如果存在 http时则不拼接基地址，否则都会拼接基地址 
  * data 接口参数
  * method 请求方式  POST GET
- * isAes 是否使用加密包裹数据
- * isLoading 是否显示加载中
+ * isAes 是否使用加密包裹数据, 默认true
+ * isLoading 是否显示加载中 默认true
  * tipsTime 接口返回错误时，提示的时间
  * allRes  是否返回完整的接口数据 {"IsSuccess": true,"Message": "", "Result"：""} , 默认返回接口中的  Result
  * 杜财旺 2023-6-18 15:50   如果需要使用到后面的参数，前面参数不可缺省
@@ -19,15 +19,22 @@ const AesData = {
 	"VERSION": ""
 }
 
-export default function axios(url, data = {}, method = 'POST', isAes = true, isLoading = false, tipsTime = 3000,
-	allRes = false) {
+export default function axios(options) {
+	const {
+		url,
+		data = {},
+		method = 'POST',
+		isAes = true,
+		isLoading = true,
+		tipsTime = 3000,
+		allRes = true
+	} = options
 	let Token = null;
 	try {
 		Token = uni.getStorageSync('token_key');
 	} catch (e) {
 		console.error('未获取到token');
 	}
-
 	if (!url) return uni.showToast({
 		title: '请求地址无效，请联系管理员',
 		icon: 'none'
@@ -38,19 +45,17 @@ export default function axios(url, data = {}, method = 'POST', isAes = true, isL
 			mask: true
 		})
 	}
-	
-	if(url.charAt(0)!='/'){
-		url = '/'+url
+	if (url.charAt(0) != '/') {
+		url = '/' + url
 	}
-	
+	let AjaxUrl = url;
 	// #ifdef H5
-	url = '/eos-api' + url
+	AjaxUrl = '/eos-api' + url
 	// #endif
-	
 	// #ifndef H5
-	url = getApp().globalData.BaseURL + '/eos-api' + url
+	AjaxUrl = getApp().globalData.BaseURL + '/eos-api' + url
 	// #endif
-	console.log('axiosURL=', url );
+	// console.log('axiosURL=', AjaxUrl);
 	let savedata = JSON.parse(JSON.stringify(data)),
 		newAesData = savedata,
 		copyAesData = JSON.parse(JSON.stringify(AesData));
@@ -65,13 +70,14 @@ export default function axios(url, data = {}, method = 'POST', isAes = true, isL
 	newAesData.BILLFROM = '1'
 	return new Promise((resolve, reject) => {
 		uni.request({
-			url: url,
+			url: AjaxUrl,
 			method: method,
 			data: newAesData,
 			header: {
 				Authorization: 'Bearer ' + Token
 			},
 			success: (res) => {
+				// console.log('request', res);
 				uni.hideLoading()
 				if (res.statusCode == 401) {
 					uni.showToast({
@@ -100,7 +106,7 @@ export default function axios(url, data = {}, method = 'POST', isAes = true, isL
 					return reject(res.statusCode);
 				} else if (!res.data.SUCCESS) {
 					let resData = res.data;
-					if(resData.STATUS ==401 ){
+					if (resData.STATUS == 401) {
 						uni.showToast({
 							title: '权限已失效，请重新登录。',
 							icon: 'none'

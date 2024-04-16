@@ -1,5 +1,5 @@
 <template>
-	<view class="page" v-if="!isLoading">
+	<view class="page" >
 
 		<view class="login-header">
 			<view class="title">
@@ -292,7 +292,8 @@
 	
 	const getGlobalData = ()=>{
 		getGlobalConfig().then(res=>{
-			userStore.setGlobalConfig(res.RESULT)
+			console.log(66, res);
+			// userStore.setGlobalConfig(res.RESULT)
 		})
 	}
 
@@ -322,9 +323,9 @@
 				} else if (p.by == 0) {
 					loginForm.USERTYPE = p.ut
 					whereBy.value = p.by
-					loginEvent()
+					// loginEvent()
 				} else {
-					loginEvent()
+					// loginEvent()
 				}
 			},
 			fail: function(err) {
@@ -427,13 +428,14 @@
 			getApp().globalData.menuConfig = menus
 			tabStore.setTabs(menus)
 			// let path = whereBy.value == 0 ? '/pages/tab05/tab05' : '/pages/tab01/tab01'
-			let path = '/pages/index/index'
-			uni.navigateTo({
-				url: path
-			})
-			// uni.switchTab({
+			// let path = '/pages/index/index'
+			// uni.navigateTo({
 			// 	url: path
 			// })
+			tabStore.setActiveCode('tab01')
+			uni.switchTab({
+				url: './../tab01/tab01'
+			})
 		})
 	}
 
