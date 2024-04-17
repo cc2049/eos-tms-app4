@@ -24,6 +24,12 @@
 		watch,
 		getCurrentInstance
 	} from 'vue';
+	const goLogin =()=>{
+		uni.clearStorage()
+		uni.reLaunch({
+			url: '/pages/index/login'
+		})
+	}
 </script>
 
 <style scoped lang="scss">

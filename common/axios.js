@@ -146,7 +146,7 @@ export default function axios(options) {
 					return;
 				}
 				if (!res.data.MESSAGE) res.data.MESSAGE = '';
-				if (allRes) return resolve(res.data)
+				if (!allRes) return resolve(res.data.RESULT)
 				return resolve(res.data)
 			},
 			fail: (err) => {

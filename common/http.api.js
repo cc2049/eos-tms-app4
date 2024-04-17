@@ -22,6 +22,7 @@ const install = (Vue, vm) => {
 	let getConifg = (params = {}) => axios({
 		url: configUrl,
 		data: params,
+		allRes: false
 	});
 	let getUserInfo = (params = {}) => axios({
 		url: userInfoUrl,
